@@ -28,7 +28,9 @@
             <div id="sidebar">
                 <div class="ulSide">
                    <a class="btn " href="{{ route('admin.dashboard')}}">Dashboard</a>
-                   <a class="btn " href="{{ route('admin.project.index')}}">Project</a>
+                   <a class="btn " href="{{ route('admin.project.index')}}">Projects</a>
+                   <a class="btn " href="{{ route('admin.types.index')}}">Types</a>
+                   <a class="btn " href="{{ route('admin.technologies.index')}}">Technologies</a>
                 </div>
             </div>
             <main id="main">
