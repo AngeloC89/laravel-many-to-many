@@ -2,24 +2,36 @@
 @section('content')
 
 <div id="showProject" class="container">
-
-  @if(session()->has('message'))
+  <div>
+    @if(session()->has('message'))
     <div class="alert alert-success">
-    {{ session()->get('message') }}
+      {{ session()->get('message') }}
     </div>
   @endif
+  </div>
+
 
   <h1 class=" text-uppercase py-3 ">{{ $project->title }}</h1>
 
   <img class="w-25" src="{{asset('storage/' . $project->image ?? '') }}" alt="">
 
   <div class=" fs-3 py-4">Descrizione: {{ $project->content }}</div>
-
-  @if ($project->type)
-
-  <div class=" fs-3 py-4">Tipo: {{ $project->type->name }}</div>
-  
+  <div>
+    @if ($project->type)
+    <span class="badge text-bg-secondary p-2 fs-5"> {{ $project->type->name }}</span>
   @endif
+
+  </div>
+
+
+  <div>
+    @if ($project->technologies)
+    @foreach ($project->technologies as $technology)
+    <span class="badge text-bg-primary">{{ $technology->name }}</span>
+  @endforeach
+  @endif
+  </div>
+
 
   <div class="d-flex justify-content-start py-2">
     <button class="btn btn-primary h-25"><a class="text-decoration-none text-white"
