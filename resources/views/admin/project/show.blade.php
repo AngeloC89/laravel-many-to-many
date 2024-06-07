@@ -23,14 +23,14 @@
 
   </div>
 
-
-  <div>
-    @if ($project->technologies)
-    @foreach ($project->technologies as $technology)
-    <span class="badge text-bg-primary">{{ $technology->name }}</span>
-  @endforeach
+<div class="my-3 ">
+  @if ($project->technologies)
+      @foreach ($project->technologies as $technology)
+        <span class="badge text-bg-success p-2 fs-5">{{ $technology->name }}</span>
+      @endforeach
   @endif
-  </div>
+</div>
+  
 
 
   <div class="d-flex justify-content-start py-2">

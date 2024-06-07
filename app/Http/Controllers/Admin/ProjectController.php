@@ -43,7 +43,8 @@ class ProjectController extends Controller
         $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
         if ($request->hasFile('image')) {
-            $path = Storage::put('project_image', $request->image);
+            $name = $request->image->getClientOriginalName();
+            $path = Storage::putFileAs('project_image', $request->image, $name);
             $form_data['image'] = $path;
         }
         
@@ -54,7 +55,7 @@ class ProjectController extends Controller
             $new_project->technologies()->attach($request->technologies);
         }    
 
-        return redirect()->route('admin.project.index')->with("message", "Il progetto $new_project->title e stato creato correttamente");
+        return redirect()->route('admin.project.show', $new_project->slug)->with("message", "Il progetto $new_project->title e stato creato correttamente");
     }
 
     /**
@@ -88,13 +89,23 @@ class ProjectController extends Controller
             
         }
         if ($request->hasFile('image')) {
-            $path = Storage::put('project_image', $request->image);
+            if($project->image) {
+                Storage::delete($project->image);
+            }
+            $name = $request->image->getClientOriginalName();
+            $path = Storage::putFileAs('project_image', $request->image, $name);
             $form_data['image'] = $path;
         }
         //     DB::enableQueryLog();
         $project->update($form_data);
         //     $query = DB::getQueryLog();
         //     dd($query);
+
+        if($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        } else {
+            $project->technologies()->sync([]);
+        }    
 
         return redirect()->route('admin.project.show', $project->slug)->with('message', "The project $project->title has been updated");
 

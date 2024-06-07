@@ -31,19 +31,18 @@ $fa-font-path: "../webfonts" !default;
         #sidebar {
             width: 150px;
             height: 100%;
-            background-color: grey;
+            background-color: rgb(0, 0, 0);
+           color: aqua;
 
             .ulSide {
                 width: 100%;
 
                 a {
                     text-decoration: none;
-                    color: black;
+                    color: blue;
                     font-size: 1.3rem;
-
                     width: 100%;
                     text-align: start;
-
                     &:hover {
                         background-color: white;
                     }

@@ -9,17 +9,17 @@
     </div>
   @endif
 
-  <h1 class=" text-uppercase py-3 ">{{ $technologiy->title }}</h1>
+  <h1 class=" text-uppercase py-3 ">{{ $technology->name }}</h1>
 
-  <img class="w-25" src="{{asset('storage/' . $technologys->image ?? '') }}" alt="">
+  <img class="w-25" src="{{asset('storage/' . $technology->image ?? '') }}" alt="">
 
-  <div class=" fs-3 py-4">Status: {{ $technologys->content }}</div>
+  <div class=" fs-3 py-4">Status: {{ $technology->content }}</div>
 
   <div class="d-flex justify-content-start py-2">
     <button class="btn btn-primary h-25"><a class="text-decoration-none text-white"
-        href="{{route('admin.technologies.edit', $technologys->slug)}}">Modifica</a></button>
+        href="{{route('admin.technologies.edit', $technology->slug)}}">Modifica</a></button>
 
-    <form action="{{ route('admin.technologies.destroy', $technologys->slug) }}" method="POST">
+    <form action="{{ route('admin.technologies.destroy', $technology->slug) }}" method="POST">
       @csrf
       @method('DELETE')
       <input id="deletetechnologies" type="submit" value="Elimina" class="btn btn-danger ms-3">

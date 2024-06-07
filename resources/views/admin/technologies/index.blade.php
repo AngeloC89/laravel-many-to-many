@@ -37,7 +37,7 @@
         <td>{{$technology->created_at}}</td>
         <td>{{$technology->updated_at}}</td>
         <td>
-          <div class="d-flex gap-2 p-4"> <a href=""
+          <div class="d-flex gap-2 p-4"> <a href="{{route('admin.technologies.show', $technology->slug)}}"
             class="btn btn-primary"> <i class="fa-solid fa-eye"></i></a>
 
           <a href="" class="btn btn-warning"> <i
