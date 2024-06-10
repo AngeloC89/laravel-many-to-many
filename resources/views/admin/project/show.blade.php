@@ -40,7 +40,7 @@
     <form action="{{ route('admin.project.destroy', $project->slug) }}" method="POST">
       @csrf
       @method('DELETE')
-      <input id="deleteProject" type="submit" value="Elimina" class="btn btn-danger ms-3">
+      <input data-item-title="{{ $project->title }}" type="submit" value="Elimina" class="btn btn-danger ms-3">
     </form>
 
   </div>

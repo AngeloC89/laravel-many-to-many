@@ -1,20 +1,20 @@
 @extends('layouts.admin')
-@section('content')
 
 
 @section('content')
+
+<nav class="d-flex justify-content-between align-items-center p-2 container ">
+  <h2>Table of projects</h2>
+  <a class="btn btn-primary" href="{{route('admin.project.create')}}">Aggiungi</a>
+</nav>
 <div id="tableIndex">
-  <div class="d-flex justify-content-between align-items-center p-2 py-4 container">
-    <h2>Table of projects</h2>
-    <a class="btn btn-primary" href="{{route('admin.project.create')}}">Aggiungi</a>
-  </div>
-
   <div class="container p-2">
     @if(session()->has('message'))
     <div class="alert alert-success">
       {{ session()->get('message') }}
     </div>
   @endif
+
     <table class="table table-success table-striped">
       <thead>
         <tr>
@@ -29,7 +29,7 @@
         </tr>
       </thead>
 
-      <tbody class="table-group-divider">
+      <tbody>
         @foreach ($projects as $project)
       <tr>
         <th scope="row">{{$project->id}}</th>
@@ -56,8 +56,13 @@
       </tr>
     @endforeach
       </tbody>
+
+
+
+
     </table>
   </div>
 
 </div>
+
 @endsection
